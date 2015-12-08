@@ -17,7 +17,7 @@ npm install assemble-notifications --save-dev
 var gulp = require('gulp');
 var postcss = require('gulp-postcss');
 var assembleCore = require('assemble-core');
-var assembleModals = require('assemble-notifications');
+var assembleNotifications = require('assemble-notifications');
 
 gulp.task('css', function () {
     var processors = [
@@ -60,7 +60,7 @@ $notification-font-size: 100%;
 ```css
 $notification-z-index: zOrder('notification');
 ```
-See [PostCSS z-index Order] for more info and seting z-index values.
+See [PostCSS z-index Order] for more info and setting z-index values.
 
 ##### $notification-padding
 - Default: 7px 15px;
