@@ -54,13 +54,25 @@ $notification-width: 400px;
 $notification-font-size: 100%;
 ```
 
-##### $notification-z-index
-- Default:  10;
-- Type: Number
-```css
-$notification-z-index: zOrder('notification');
+##### Modal z-index
+This component makes use of the [postcss-constants] plugin to set the z-index. [postcss-constants] is included with [Assemble Core] so you are good to go. This helps keep all our z-index values in one place. To get this working you will need to:
+1- Create a 'constants.js' file and add this to it
+```js
+module.exports = {
+  zindexes: {
+    notification: 10
+  }
+};
 ```
-See [PostCSS z-index Order] for more info and setting z-index values.
+2- Then in your main css file add this towards the top:
+```css
+~zindexes: "./constants.js";
+```
+
+Now the assemble-notification component will pull the z-index values from the constants.js file. You can add more values there and call them in your css with
+```css
+z-index: ~zindexes.tip;
+```
 
 ##### $notification-padding
 - Default: 7px 15px;
