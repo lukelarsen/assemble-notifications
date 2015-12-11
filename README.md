@@ -1,12 +1,12 @@
 [Assemble]:                http://assemblecss.com
-[Assemble Core]:           https://github.com/lukelarsen/assemble-core
-[PostCSS z-index Order]:   https://github.com/lukelarsen/postcss-zindex-order
+[Assemble Base]:           https://github.com/lukelarsen/assemble-base
+[postcss-map]:             https://github.com/pascalduez/postcss-map
 
 # Assemble Notifications
 Assemble Notifications is a component of the [Assemble] CSS Framework. It will give you a solid base for notifications in your project. It has some default styles that can easily be overridden so you can add your own look.
 
 ## Requirements
-Assemble Buttons requires [Assemble Core].
+Assemble Notifications requires [Assemble Base].
 
 ## Installation
 npm install assemble-notifications --save-dev
@@ -21,12 +21,7 @@ var assembleNotifications = require('assemble-notifications');
 
 gulp.task('css', function () {
     var processors = [
-        assembleCore({
-            zLayerValues: {
-                'modal': 9,
-                'tip': 10
-            }
-        }),
+        assembleCore,
         assembleNotifications
     ];
     return gulp.src('./src/*.css')
@@ -35,12 +30,30 @@ gulp.task('css', function () {
 });
 ```
 
+### HTML
+```html
+<div class="notification-wrapper  notification-wrapper--**location modifier**">
+    <div class="notification  notification--**color modifier**">
+        <div class="notification__title-bar">
+            <h3 class="notification-title"><img class="iconic" data-src="../images/lock.svg"> Message Title</h3>
+            <div class="notification-close-btn">
+                <img class="iconic" data-src="../images/close.svg">
+            </div>
+        </div>
+        <div class="notification-content">
+            <p class="notification-text">Message Text that goes on for a while so show a large message.</p>
+        </div>
+    </div>
+</div>
+```
+
 ## Options
-Options are set with variables. These variables are already set with their default values so they will just work out of the box. If you wish to change them just define the variable you want to change before you load the _assemble-notifications.css file. You may wish you see [Assemble Core] for more examples and directions for setting up a Assemble project.
+Options are set with variables. These variables are already set with their default values so they will just work out of the box. If you wish to change them just define the variable you want to change before you load the _assemble-notifications.css file. You may wish you see [Assemble Base] for more examples and directions for setting up a Assemble project.
 
 ### Design Variables
 
 ##### $notification-width
+- Set the notification width.
 - Default: 315px;
 - Type: Number
 ```css
@@ -48,33 +61,38 @@ $notification-width: 400px;
 ```
 
 ##### $notification-font-size
+- Set the notificaiton font size.
 - Default:  0.8rem;
 - Type: Number
 ```css
 $notification-font-size: 100%;
 ```
 
-##### Modal z-index
-This component makes use of the [postcss-constants] plugin to set the z-index. [postcss-constants] is included with [Assemble Core] so you are good to go. This helps keep all our z-index values in one place. To get this working you will need to:
-1- Create a 'constants.js' file and add this to it
+##### Notification z-index
+This component makes use of the [postcss-map] plugin to set the z-index. [postcss-map] is included with [Assemble Base] so you are good to go. This helps keep all our z-index values in one place. To get this working you will need to:
+1- Create a 'constants.json' file and add this to it
 ```js
-module.exports = {
-  zindexes: {
-    notification: 10
-  }
-};
+{
+    "zIndexes": {
+        "notification": 10
+    }
+}
 ```
-2- Then in your main css file add this towards the top:
-```css
-~zindexes: "./constants.js";
+2- Then in your main gulp file provide the path to the newly created constants.json in the assembeCore options.
+```js
+assembleCore({
+    basePath: 'src/',
+    maps: [ 'constants.json' ]
+})
 ```
 
-Now the assemble-notification component will pull the z-index values from the constants.js file. You can add more values there and call them in your css with
+Now the assemble-notifications component will pull the z-index values from the constants.js file. You can add more values there and call them in your css with
 ```css
-z-index: ~zindexes.tip;
+z-index: map(constants, zIndexes, something);
 ```
 
 ##### $notification-padding
+- Set notification padding.
 - Default: 7px 15px;
 - Type: String
 ```css
@@ -82,6 +100,7 @@ $notification-padding: 5px 10px;
 ```
 
 ##### $notification-close-color
+- Set the notification close color.
 - Default: #FFF;
 - Type: Color
 ```css
@@ -89,6 +108,7 @@ $notification-close-color: #000;
 ```
 
 ##### $notification-close-color-hover
+- Set the notification close hover color.
 - Default: #000;
 - Type: Color
 ```css
@@ -96,6 +116,7 @@ $notification-close-color-hover: #FFF;
 ```
 
 ##### $notification-space-from-edge
+- Set the space the notification will appear from the edge of the browser.
 - Default: 20px;
 - Type: Number
 ```css
@@ -140,33 +161,118 @@ Will output:
     color: white;
 }
 ```
+Usage
+```html
+<div class="notification-wrapper  notification-wrapper--**location modifier**">
+    <div class="notification  notification--success">
+        <div class="notification__title-bar">
+            <h3 class="notification-title"><img class="iconic" data-src="../images/lock.svg"> Message Title</h3>
+            <div class="notification-close-btn">
+                <img class="iconic" data-src="../images/close.svg">
+            </div>
+        </div>
+        <div class="notification-content">
+            <p class="notification-text">Message Text that goes on for a while so show a large message.</p>
+        </div>
+    </div>
+</div>
+```
+
 
 ### Modifier Variables
 
 ##### $notification-bottom-right
+- Turn on/off notifications in the bottom right. A class of .notification-wrapper--bottom-right will be generated if true.
 - Default: false;
 - Type: Boolean
 ```css
 $notification-bottom-right: true;
 ```
+Usage
+```html
+<div class="notification-wrapper  notification-wrapper--bottom-right">
+    <div class="notification  notification--success">
+        <div class="notification__title-bar">
+            <h3 class="notification-title"><img class="iconic" data-src="../images/lock.svg"> Message Title</h3>
+            <div class="notification-close-btn">
+                <img class="iconic" data-src="../images/close.svg">
+            </div>
+        </div>
+        <div class="notification-content">
+            <p class="notification-text">Message Text that goes on for a while so show a large message.</p>
+        </div>
+    </div>
+</div>
+```
 
 ##### $notification-bottom-left
+- Turn on/off notifications in the bottom left. A class of .notification-wrapper--bottom-left will be generated if true.
 - Default: false;
 - Type: Boolean
 ```css
 $notification-bottom-left: true;
 ```
+Usage
+```html
+<div class="notification-wrapper  notification-wrapper--bottom-left">
+    <div class="notification  notification--success">
+        <div class="notification__title-bar">
+            <h3 class="notification-title"><img class="iconic" data-src="../images/lock.svg"> Message Title</h3>
+            <div class="notification-close-btn">
+                <img class="iconic" data-src="../images/close.svg">
+            </div>
+        </div>
+        <div class="notification-content">
+            <p class="notification-text">Message Text that goes on for a while so show a large message.</p>
+        </div>
+    </div>
+</div>
+```
 
 ##### $notification-top-right
+- Turn on/off notifications in the top right. A class of .notification-wrapper--top-right will be generated if true.
 - Default: false;
 - Type: Boolean
 ```css
 $notification-top-right: true;
 ```
+Usage
+```html
+<div class="notification-wrapper  notification-wrapper--top-right">
+    <div class="notification  notification--success">
+        <div class="notification__title-bar">
+            <h3 class="notification-title"><img class="iconic" data-src="../images/lock.svg"> Message Title</h3>
+            <div class="notification-close-btn">
+                <img class="iconic" data-src="../images/close.svg">
+            </div>
+        </div>
+        <div class="notification-content">
+            <p class="notification-text">Message Text that goes on for a while so show a large message.</p>
+        </div>
+    </div>
+</div>
+```
 
 ##### $notification-top-left
+- Turn on/off notifications in the top left. A class of .notification-wrapper--top-left will be generated if true.
 - Default: false;
 - Type: Boolean
 ```css
 $notification-top-left: true;
+```
+Usage
+```html
+<div class="notification-wrapper  notification-wrapper--top-left">
+    <div class="notification  notification--success">
+        <div class="notification__title-bar">
+            <h3 class="notification-title"><img class="iconic" data-src="../images/lock.svg"> Message Title</h3>
+            <div class="notification-close-btn">
+                <img class="iconic" data-src="../images/close.svg">
+            </div>
+        </div>
+        <div class="notification-content">
+            <p class="notification-text">Message Text that goes on for a while so show a large message.</p>
+        </div>
+    </div>
+</div>
 ```

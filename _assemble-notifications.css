@@ -24,9 +24,9 @@
     position: fixed;
     width: $notification-width;
     font-size: $notification-font-size;
-    z-index: ~zindexes.notification;
+    z-index: map(constants, zIndexes, notification);
 
-    @include media-query(palm){
+    @media map(constants, mediaQueries, palm){
         width: auto;
     }
 }
@@ -97,7 +97,7 @@
         right: $notification-space-from-edge;
         bottom: $notification-space-from-edge;
 
-        @include media-query(palm){
+        @media map(constants, mediaQueries, palm){
             right: 0;
             width: 100%;
         }
@@ -117,7 +117,7 @@
         bottom: $notification-space-from-edge;
         left: $notification-space-from-edge;
 
-        @include media-query(palm){
+        @media map(constants, mediaQueries, palm){
             left: 0;
             width: 100%;
         }
@@ -137,7 +137,7 @@
         top: $notification-space-from-edge;
         right: $notification-space-from-edge;
 
-        @include media-query(palm){
+        @media map(constants, mediaQueries, palm){
             right: 0;
             width: 100%;
         }
@@ -157,7 +157,7 @@
         top: $notification-space-from-edge;
         left: $notification-space-from-edge;
 
-        @include media-query(palm){
+        @media map(constants, mediaQueries, palm){
             left: 0;
             width: 100%;
         }
