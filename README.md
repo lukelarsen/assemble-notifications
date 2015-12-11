@@ -16,12 +16,12 @@ npm install assemble-notifications --save-dev
 ```js
 var gulp = require('gulp');
 var postcss = require('gulp-postcss');
-var assembleCore = require('assemble-core');
+var assembleBase = require('assemble-base');
 var assembleNotifications = require('assemble-notifications');
 
 gulp.task('css', function () {
     var processors = [
-        assembleCore,
+        assembleBase,
         assembleNotifications
     ];
     return gulp.src('./src/*.css')
