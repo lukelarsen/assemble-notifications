@@ -23,10 +23,11 @@
 .notification-wrapper{
     position: fixed;
     width: $notification-width;
-    font-size: $notification-font-size;
     z-index: map(constants, zIndexes, notification);
+}
 
-    @media map(constants, mediaQueries, palm){
+@media map(constants, mediaQueries, palm){
+    .notification-wrapper{
         width: auto;
     }
 }
@@ -89,6 +90,7 @@
 .notification-text{
     width: 100%;
     margin: 0;
+    font-size: $notification-font-size;
 }
 
 
@@ -106,8 +108,10 @@
     .notification-wrapper--bottom-right{
         right: $notification-space-from-edge;
         bottom: $notification-space-from-edge;
+    }
 
-        @media map(constants, mediaQueries, palm){
+    @media map(constants, mediaQueries, palm){
+        .notification-wrapper--bottom-right{
             right: 0;
             width: 100%;
         }
@@ -126,8 +130,10 @@
     .notification-wrapper--bottom-left{
         bottom: $notification-space-from-edge;
         left: $notification-space-from-edge;
+    }
 
-        @media map(constants, mediaQueries, palm){
+    @media map(constants, mediaQueries, palm){
+        .notification-wrapper--bottom-left{
             left: 0;
             width: 100%;
         }
@@ -146,8 +152,10 @@
     .notification-wrapper--top-right{
         top: $notification-space-from-edge;
         right: $notification-space-from-edge;
+    }
 
-        @media map(constants, mediaQueries, palm){
+    @media map(constants, mediaQueries, palm){
+        .notification-wrapper--top-right{
             right: 0;
             width: 100%;
         }
@@ -166,8 +174,10 @@
     .notification-wrapper--top-left{
         top: $notification-space-from-edge;
         left: $notification-space-from-edge;
+    }
 
-        @media map(constants, mediaQueries, palm){
+    @media map(constants, mediaQueries, palm){
+        .notification-wrapper--top-left{
             left: 0;
             width: 100%;
         }
