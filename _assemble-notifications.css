@@ -62,7 +62,7 @@
     transition: color 0.3s ease-in-out;
 }
 
-.notification-close-btn .iconic{
+.notification-close-btn .icon{
     fill: $notification-close-color;
     transition: fill 0.3s ease-in-out;
 }
@@ -71,7 +71,7 @@
     color: $notification-close-color-hover;
 }
 
-.notification-close-btn:hover .iconic{
+.notification-close-btn:hover .icon{
     fill: $notification-close-color-hover;
 }
 

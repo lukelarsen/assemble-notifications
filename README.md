@@ -45,9 +45,9 @@ Override variables here before the Assemble Components are loaded.
 <div class="notification-wrapper  notification-wrapper--**location modifier**">
     <div class="notification  notification--**color modifier**">
         <div class="notification__title-bar">
-            <h3 class="notification-title"><img class="iconic" data-src="../images/lock.svg"> Message Title</h3>
+            <h3 class="notification-title"><img class="icon" data-src="../images/lock.svg"> Message Title</h3>
             <div class="notification-close-btn">
-                <img class="iconic" data-src="../images/close.svg">
+                <img class="icon" data-src="../images/close.svg">
             </div>
         </div>
         <div class="notification-content">
@@ -164,7 +164,7 @@ Will output:
 .notification--success .notification__title-bar{
     background: orange;
 }
-.notification--success .iconic *{
+.notification--success .icon *{
     fill: white;
 }
 .notification--success .notification-text{
@@ -176,9 +176,9 @@ Usage
 <div class="notification-wrapper  notification-wrapper--**location modifier**">
     <div class="notification  notification--success">
         <div class="notification__title-bar">
-            <h3 class="notification-title"><img class="iconic" data-src="../images/lock.svg"> Message Title</h3>
+            <h3 class="notification-title"><img class="icon" data-src="../images/lock.svg"> Message Title</h3>
             <div class="notification-close-btn">
-                <img class="iconic" data-src="../images/close.svg">
+                <img class="icon" data-src="../images/close.svg">
             </div>
         </div>
         <div class="notification-content">
@@ -203,9 +203,9 @@ Usage
 <div class="notification-wrapper  notification-wrapper--bottom-right">
     <div class="notification  notification--success">
         <div class="notification__title-bar">
-            <h3 class="notification-title"><img class="iconic" data-src="../images/lock.svg"> Message Title</h3>
+            <h3 class="notification-title"><img class="icon" data-src="../images/lock.svg"> Message Title</h3>
             <div class="notification-close-btn">
-                <img class="iconic" data-src="../images/close.svg">
+                <img class="icon" data-src="../images/close.svg">
             </div>
         </div>
         <div class="notification-content">
@@ -227,9 +227,9 @@ Usage
 <div class="notification-wrapper  notification-wrapper--bottom-left">
     <div class="notification  notification--success">
         <div class="notification__title-bar">
-            <h3 class="notification-title"><img class="iconic" data-src="../images/lock.svg"> Message Title</h3>
+            <h3 class="notification-title"><img class="icon" data-src="../images/lock.svg"> Message Title</h3>
             <div class="notification-close-btn">
-                <img class="iconic" data-src="../images/close.svg">
+                <img class="icon" data-src="../images/close.svg">
             </div>
         </div>
         <div class="notification-content">
@@ -251,9 +251,9 @@ Usage
 <div class="notification-wrapper  notification-wrapper--top-right">
     <div class="notification  notification--success">
         <div class="notification__title-bar">
-            <h3 class="notification-title"><img class="iconic" data-src="../images/lock.svg"> Message Title</h3>
+            <h3 class="notification-title"><img class="icon" data-src="../images/lock.svg"> Message Title</h3>
             <div class="notification-close-btn">
-                <img class="iconic" data-src="../images/close.svg">
+                <img class="icon" data-src="../images/close.svg">
             </div>
         </div>
         <div class="notification-content">
@@ -275,9 +275,9 @@ Usage
 <div class="notification-wrapper  notification-wrapper--top-left">
     <div class="notification  notification--success">
         <div class="notification__title-bar">
-            <h3 class="notification-title"><img class="iconic" data-src="../images/lock.svg"> Message Title</h3>
+            <h3 class="notification-title"><img class="icon" data-src="../images/lock.svg"> Message Title</h3>
             <div class="notification-close-btn">
-                <img class="iconic" data-src="../images/close.svg">
+                <img class="icon" data-src="../images/close.svg">
             </div>
         </div>
         <div class="notification-content">
